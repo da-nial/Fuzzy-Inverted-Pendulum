@@ -1,0 +1,318 @@
+fuzzy_vars:
+  - name: pa
+    sets:
+      - name: up_more_right
+        points:
+          - x: 0
+            y: 0
+          - x: 30
+            y: 1
+          - x: 60
+            y: 0
+      - name: up_right
+        points:
+          - x: 30
+            y: 0
+          - x: 60
+            y: 1
+          - x: 90
+            y: 0
+      - name: up
+        points:
+          - x: 60
+            y: 0
+          - x: 90
+            y: 1
+          - x: 120
+            y: 0
+      - name: up_left
+        points:
+          - x: 90
+            y: 0
+          - x: 120
+            y: 1
+          - x: 150
+            y: 0
+      - name: up_more_left
+        points:
+          - x: 120
+            y: 0
+          - x: 150
+            y: 1
+          - x: 180
+            y: 0
+      - name: down_more_left
+        points:
+          - x: 180
+            y: 0
+          - x: 210
+            y: 1
+          - x: 240
+            y: 0
+      - name: down_left
+        points:
+          - x: 210
+            y: 0
+          - x: 240
+            y: 1
+          - x: 270
+            y: 0
+      - name: down
+        points:
+          - x: 240
+            y: 0
+          - x: 270
+            y: 1
+          - x: 300
+            y: 0
+      - name: down_right
+        points:
+          - x: 270
+            y: 0
+          - x: 300
+            y: 1
+          - x: 330
+            y: 0
+      - name: down_more_right
+        points:
+          - x: 300
+            y: 0
+          - x: 330
+            y: 1
+          - x: 360
+            y: 0
+
+  - name: pv
+    sets:
+      - name: cw_fast
+        points:
+          - x: -200
+            y: 1
+          - x: -100
+            y: 0
+      - name: cw_slow
+        points:
+          - x: -200
+            y: 0
+          - x: -100
+            y: 1
+          - x: 0
+            y: 0
+      - name: stop
+        points:
+          - x: -100
+            y: 0
+          - x: 0
+            y: 1
+          - x: 100
+            y: 0
+      - name: ccw_slow
+        points:
+          - x: 0
+            y: 0
+          - x: 100
+            y: 1
+          - x: 200
+            y: 0
+      - name: ccw_fast
+        points:
+          - x: 100
+            y: 0
+          - x: 200
+            y: 1
+
+  - name: cp
+    sets:
+      - name: left_far
+        points:
+          - x: -10
+            y: 1
+          - x: -5
+            y: 0
+      - name: left_near
+        points:
+          - x: -10
+            y: 0
+          - x: -2.5
+            y: 1
+          - x: 0
+            y: 0
+      - name: stop
+        points:
+          - x: -2.5
+            y: 0
+          - x: 0
+            y: 1
+          - x: 2.5
+            y: 0
+      - name: right_near
+        points:
+          - x: 0
+            y: 0
+          - x: 2.5
+            y: 1
+          - x: 10
+            y: 0
+      - name: right_far
+        points:
+          - x: 5
+            y: 0
+          - x: 10
+            y: 1
+
+  - name: cv
+    sets:
+      - name: left_fast
+        points:
+          - x: -5
+            y: 1
+          - x: -2.5
+            y: 0
+      - name: left_slow
+        points:
+          - x: -5
+            y: 0
+          - x: -1
+            y: 1
+          - x: 0
+            y: 0
+      - name: stop
+        points:
+          - x: -60
+            y: 0
+          - x: 0
+            y: 1
+          - x: 60
+            y: 0
+      - name: right_slow
+        points:
+          - x: 0
+            y: 0
+          - x: 60
+            y: 1
+          - x: 80
+            y: 0
+      - name: right_fast
+        points:
+          - x: 60
+            y: 0
+          - x: 80
+            y: 1
+          - x: 100
+            y: 0
+
+  - name: force
+    sets:
+      - name: left_fast
+        points:
+          - x: -100
+            y: 0
+          - x: -80
+            y: 1
+          - x: -60
+            y: 0
+      - name: left_slow
+        points:
+          - x: -80
+            y: 0
+          - x: -60
+            y: 1
+          - x: 0
+            y: 0
+      - name: stop
+        points:
+          - x: -60
+            y: 0
+          - x: 0
+            y: 1
+          - x: 60
+            y: 0
+      - name: right_slow
+        points:
+          - x: 0
+            y: 0
+          - x: 60
+            y: 1
+          - x: 80
+            y: 0
+      - name: right_fast
+        points:
+          - x: 60
+            y: 0
+          - x: 80
+            y: 1
+          - x: 100
+            y: 0
+
+fuzzy_rules:
+  # Rule 0 seperated to 3 rules (CNF Form)
+  - rule: IF (pa IS up) AND (pv IS stop) THEN force IS stop
+  - rule: IF (pa IS up_right) AND (pv IS ccw_slow) THEN force IS stop
+  - rule: IF (pa IS up_left) AND (pv IS cw_slow) THEN force IS stop
+
+
+  - rule: IF (pa IS up_more_right) AND (pv IS ccw_slow) THEN force IS right_fast
+  - rule: IF (pa IS up_more_right) AND (pv IS cw_slow) THEN force IS right_fast
+
+  - rule: IF (pa IS up_more_left) AND (pv IS cw_slow) THEN force IS left_fast
+  - rule: IF (pa IS up_more_left) AND (pv IS ccw_slow) THEN force IS left_fast
+
+  - rule: IF (pa IS up_more_right) AND (pv IS ccw_fast) THEN force IS left_slow
+  - rule: IF (pa IS up_more_right) AND (pv IS cw_fast) THEN force IS right_fast
+
+  - rule: IF (pa IS up_more_left) AND (pv IS cw_fast) THEN force IS right_slow
+  - rule: IF (pa IS up_more_left) AND (pv IS ccw_fast) THEN force IS left_fast
+
+
+  - rule: IF (pa IS down_more_right) AND (pv IS ccw_slow) THEN force IS right_fast
+  - rule: IF (pa IS down_more_right) AND (pv IS cw_slow) THEN force IS stop
+
+  - rule: IF (pa IS down_more_left) AND (pv IS cw_slow) THEN force IS left_fast
+  - rule: IF (pa IS down_more_left) AND (pv IS ccw_slow) THEN force IS stop
+
+
+  - rule: IF (pa IS down_more_right) AND (pv IS ccw_fast) THEN force IS stop
+  - rule: IF (pa IS down_more_right) AND (pv IS cw_fast) THEN force IS stop
+
+  - rule: IF (pa IS down_more_left) AND (pv IS cw_fast) THEN force IS stop
+  - rule: IF (pa IS down_more_left) AND (pv IS ccw_fast) THEN force IS stop
+
+
+  - rule: IF (pa IS down_right) AND (pv IS ccw_slow) THEN force IS right_fast
+  - rule: IF (pa IS down_right) AND (pv IS cw_slow) THEN force IS right_fast
+
+  - rule: IF (pa IS down_left) AND (pv IS cw_slow) THEN force IS left_fast
+  - rule: IF (pa IS down_left) AND (pv IS ccw_slow) THEN force IS left_fast
+
+
+  - rule: IF (pa IS down_right) AND (pv IS ccw_fast) THEN force IS stop
+  - rule: IF (pa IS down_right) AND (pv IS cw_fast) THEN force IS right_slow
+
+  - rule: IF (pa IS down_left) AND (pv IS cw_fast) THEN force IS stop
+  - rule: IF (pa IS down_left) AND (pv IS ccw_fast) THEN force IS left_slow
+
+
+  - rule: IF (pa IS up_right) AND (pv IS ccw_slow) THEN force IS right_slow
+  - rule: IF (pa IS up_right) AND (pv IS cw_slow) THEN force IS right_fast
+  - rule: IF (pa IS up_right) AND (pv IS stop) THEN force IS right_fast
+  - rule: IF (pa IS up_left) AND (pv IS cw_slow) THEN force IS left_slow
+  - rule: IF (pa IS up_left) AND (pv IS ccw_slow) THEN force IS left_fast
+  - rule: IF (pa IS up_left) AND (pv IS stop) THEN force IS left_fast
+
+
+  - rule: IF (pa IS up_right) AND (pv IS ccw_fast) THEN force IS left_fast
+  - rule: IF (pa IS up_right) AND (pv IS cw_fast) THEN force IS right_fast
+  - rule: IF (pa IS up_left) AND (pv IS cw_fast) THEN force IS right_fast
+  - rule: IF (pa IS up_left) AND (pv IS ccw_fast) THEN force IS left_fast
+
+
+  - rule: IF (pa IS down) AND (pv IS stop) THEN force IS right_fast
+  - rule: IF (pa IS down) AND (pv IS cw_fast) THEN force IS stop
+  - rule: IF (pa IS down) AND (pv IS ccw_fast) THEN force IS stop
+
+  - rule: IF (pa IS up) AND (pv IS ccw_slow) THEN force IS left_slow
+  - rule: IF (pa IS up) AND (pv IS ccw_fast) THEN force IS left_fast
+  - rule: IF (pa IS up) AND (pv IS cw_slow) THEN force IS right_slow
+  - rule: IF (pa IS up) AND (pv IS cw_fast) THEN force IS right_fast
+  - rule: IF (pa IS up) AND (pv IS stop) THEN force IS stop
+
