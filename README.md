@@ -84,7 +84,7 @@ Also, you can run the project using custom configurations located in the **confi
 >
 > **force**: force applied on cart, *newton*
 
-You can see all the parameters in **world.py** module.
+You can see all the parameters in the [world.py](src/world.py) module.
 These parameters can be modified using the configuration files located in the [configs](src/configs) directory.
 
 ### Fuzzy Control Language (FCL)
@@ -113,19 +113,19 @@ the `fcl_path` value.
 
 The implemented fuzzy controller consists of four main methods:
 
-- Reading the Problem: The `read_fuzzy_problem` method reads the fuzzy logic problem definition from an input YAML
+- **Reading the Problem**: The `read_fuzzy_problem` method reads the fuzzy logic problem definition from an input YAML
   file ([input.yml](src/input.yml) by default). This file includes the fuzzy variables and rules.
 
-- Modeling the Problem: The fuzzy variables are modeled as `FuzzyVar` objects which contain the variable name and
+- **Modeling the Problem**: The fuzzy variables are modeled as `FuzzyVar` objects which contain the variable name and
   associated fuzzy sets. The fuzzy rules are modeled as `FuzzyRule` objects containing the IF-THEN rule hypotheses and
   conclusions.
 
-- Inference: The `inference` method evaluates each fuzzy rule against the current inputs and returns a dictionary
+- **Inference**: The `inference` method evaluates each fuzzy rule against the current inputs and returns a dictionary
   mapping
   each output force fuzzy set to its membership value. This is done by checking the rule hypotheses against the input
   fuzzy variable values.
 
-- "Defuzzifying": This method transforms the fuzzy output dictionary into a single crisp force value for the inverted
+- "**Defuzzifying**": This method transforms the fuzzy output dictionary into a single crisp force value for the inverted
   pendulum control. It creates membership value shapes for each output force fuzzy set. These shapes are combined using
   shapely's `cascade_union` operation. Taking the centroid of this aggregated shape gives the final defuzzified force
   value.
