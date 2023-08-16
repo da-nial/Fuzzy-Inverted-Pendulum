@@ -31,9 +31,8 @@ instability and nonlinearity well without requiring precise analytical models.
 
 ## Getting Started
 
-As far as I know, the pyfuzzy library is only available for Python 2.7. This makes the installation of pygame on this
-environment on MacOS difficult (since pygame's library requirements are not compatible with the new macOS version by
-default). However, the installation (at least for me) went smoothly.
+As far as I know, the `pyfuzzy` library is only available for Python 2.7. This makes the installation of pygame on MacOS difficult (since pygame's library requirements are not compatible with new macOS versions by
+default). However, the installation on Linux should be fine.
 
 ### Install
 
@@ -52,7 +51,7 @@ Also, you can run the project using custom configurations located in the **confi
 
 ## Usage
 
-### Physical parameters of simulator
+### Physical parameters of the simulator
 
 > **M**: cart mass, *kg*
 >
@@ -127,7 +126,7 @@ The implemented fuzzy controller consists of four main methods:
 
 - "**Defuzzifying**": This method transforms the fuzzy output dictionary into a single crisp force value for the inverted
   pendulum control. It creates membership value shapes for each output force fuzzy set. These shapes are combined using
-  shapely's `cascade_union` operation. Taking the centroid of this aggregated shape gives the final defuzzified force
+  Shapely's `cascade_union` operation. Taking the centroid of this aggregated shape gives the final defuzzified force
   value.
 
 ### Demo
@@ -136,7 +135,7 @@ The implemented fuzzy controller consists of four main methods:
 
 To the best of my knowledge, this project was designed by [Hassan Kazemi Tehrani](https://github.com/shayanthrn) and
 Kasra Mojallal, who also provided the starter code. My contributions include solving the problem using the added
-FuzzyController ands its related classes.
+FuzzyController and its related classes.
 
 ## Course Information
 
