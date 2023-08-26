@@ -134,7 +134,7 @@ The implemented fuzzy controller consists of four main methods:
 ## Contributors
 
 To the best of my knowledge, this project was designed by [Hassan Kazemi Tehrani](https://github.com/shayanthrn) and
-Kasra Mojallal, who also provided the starter code. My contributions include solving the problem using the added
+Kasra Mojallal, who also provided the starter code. My contributions include solving the problem by adding the
 FuzzyController and its related classes.
 
 ## Course Information
